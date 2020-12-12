@@ -157,6 +157,12 @@ client.on('message', message => {
 		);
 	} else if (message.content === `${prefix} uptime`) {
 		message.channel.send(`https://stats.uptimerobot.com/RkPMNfrJBx`);
+	} else if (message.content == `${prefix} trump`) {
+		fetch('https://api.tronalddump.io/random/quote', settings)
+			.then(res => res.json())
+			.then(json => {
+				message.reply(`\n> ${json.value}\n-Donald Trump`);
+			});
 	}
 });
 

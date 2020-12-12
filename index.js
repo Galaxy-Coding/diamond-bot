@@ -7,6 +7,7 @@ const settings = { method: 'Get' };
 client.once('ready', () => {
 	console.log('Ready!');
 });
+
 client.on('message', message => {
 	if (message.content === `${prefix} ping`) {
 		message.channel.send('pong');
@@ -50,7 +51,8 @@ client.on('message', message => {
 .d fox fact
 .d panda fact
 .d cat fact
-.d dog fact`
+.d dog fact
+.d trump`
 		);
 	} else if (message.content == `${prefix} lag`) {
 		message.channel.send(

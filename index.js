@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
 const client = new Discord.Client();
-let settings = { method: 'Get' };
+const settings = { method: 'Get' };
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -151,7 +151,9 @@ client.on('message', message => {
 			});
 	} else if (message.content === `${prefix} gay avatar`) {
 		message.channel.send(
-			`https://some-random-api.ml/canvas/gay?avatar=${encodeURIComponent(message.author.displayAvatarURL().replace('webp','png'))}`
+			`https://some-random-api.ml/canvas/gay?avatar=${encodeURIComponent(
+				message.author.displayAvatarURL().replace('webp', 'png')
+			)}`
 		);
 	} else if (message.content === `${prefix} uptime`) {
 		message.channel.send(`https://stats.uptimerobot.com/RkPMNfrJBx`);

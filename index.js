@@ -7,6 +7,15 @@ const settings = { method: 'Get' };
 
 client.once('ready', () => {
 	console.log('Ready!');
+		console.log(client.guilds.cache.size)
+     client.user.setStatus('online')
+     client.user.setPresence({
+         game: {
+             name: `.d help in ${client.guilds.cache.size} servers`,
+             type: "Listening",
+             url: "https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8"
+         }
+     });
 });
 
 client.on('message', message => {

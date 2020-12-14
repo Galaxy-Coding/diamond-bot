@@ -1,4 +1,4 @@
 <p align="center">
-# diamond
+#Diamond
 A discord bot
 </p>

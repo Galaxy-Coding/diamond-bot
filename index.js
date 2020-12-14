@@ -1,3 +1,4 @@
+require('./server.js')
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
@@ -6,6 +7,15 @@ const settings = { method: 'Get' };
 
 client.once('ready', () => {
 	console.log('Ready!');
+	console.log(client.guilds.cache.size)
+    client.user.setStatus('online')
+    client.user.setPresence({
+        game: {
+            name: `.d help in ${client.guilds.cache.size} servers`,
+            type: "Listening",
+            url: "https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8"
+        }
+    });
 });
 
 client.on('message', message => {
@@ -210,11 +220,13 @@ client.on('message', message => {
 			)}`
 		);
 	} else if (message.content === `${prefix} clear`) {
-		if (message.member.hasPermission('MANAGE_MESSAGES')) {
+		
+		  if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			message.channel.messages.fetch().then(results => {
 				message.channel.bulkDelete(results);
 			});
-		}
+		  
+		
 	} else if (message.content == `${prefix} kanye west`) {
 		fetch('https://api.kanye.rest/?format=json', settings)
 			.then(res => res.json())
@@ -256,3 +268,4 @@ client.on('message', message => {
 client.login(process.env.DISCORD_TOKEN);
 
 //https://api.quotable.io/random
+//https://stats.uptimerobot.com/MNJEGf5gyB

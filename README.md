@@ -14,7 +14,7 @@
 
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/galaxy-coding/diamond-bot?style=for-the-badge">
 
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/galaxy-coding/diamond-bot?color=yellow">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/galaxy-coding/diamond-bot?style=for-the-badge&color=yellow">
 
   <img alt="GitHub" src="https://img.shields.io/github/license/galaxy-coding/diamond-bot?style=for-the-badge">
 

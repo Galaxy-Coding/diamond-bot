@@ -52,4 +52,4 @@
 
 ## How to do me a favor ♥️
 * [⭐ the GitHub Repository](https://github.com/Galaxy-Coding/diamond-bot)
-* [Fork the Github repo](https://github.com/Galaxy-Coding/diamond-bot)
+* [Fork the Github Repository](https://github.com/Galaxy-Coding/diamond-bot)

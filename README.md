@@ -24,7 +24,7 @@
 `.d meme` Shows a meme
 `.d reddit meme` A meme from reddit
 `.d clear` Vlears the prevoius 100 messages
-**The commands below are obvious:**
+**The commands below :arrow_down: are obvious:**
 `.d joke` 
 `.d koala pic`
 `.d fox pic`
@@ -44,3 +44,4 @@
 `.d kanye west`
 `.d chuck norris`
 `.d star wars`
+

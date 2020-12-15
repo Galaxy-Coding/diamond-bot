@@ -19,7 +19,7 @@
 
   <a href="https://github.com/Galaxy-Coding/diamond-bot"><img alt="GitHub" src="https://img.shields.io/github/license/galaxy-coding/diamond-bot?style=for-the-badge"></a>
 
-  <img alt="Discord" src="https://img.shields.io/discord/776207512168955915?label=discord&style=for-the-badge">
+  <a href="https://disboard.org/server/776207512168955915"><img alt="Discord" src="https://img.shields.io/discord/776207512168955915?label=discord&style=for-the-badge"></a>
 
 <a href="https://github.com/Galaxy-Coding/diamond-bot"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/galaxy-coding/diamond-bot?style=for-the-badge"></a>
 <br>

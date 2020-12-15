@@ -1,7 +1,7 @@
 <div align="center">
   
   
-  ![Diamond logo](./images/diamond.png | width=100px)  
+  ![Diamond logo](./images/diamond.png|width=100px)  
 
 # Diamond
 

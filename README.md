@@ -44,7 +44,7 @@
 `.d dog fact`\
 `.d geek joke`\
 `.d trump quote`\
-`.d ron swanson`\
-`.d kanye west`\
-`.d chuck norris`\
-`.d star wars`
+`.d ron swanson quote`\
+`.d kanye west quote`\
+`.d chuck norris quote`\
+`.d star wars quote`

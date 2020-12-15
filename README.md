@@ -50,3 +50,4 @@
 `.d star wars quote`
 
 # How to do me a favor :heart:
+[:star: Star the repo](https://github.com/Galaxy-Coding/diamond-bot)

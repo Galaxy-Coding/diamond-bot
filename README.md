@@ -48,3 +48,5 @@
 `.d kanye west quote`\
 `.d chuck norris quote`\
 `.d star wars quote`
+
+# How to do me a favor :heart:

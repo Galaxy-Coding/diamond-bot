@@ -40,5 +40,5 @@
   </a>
 
 <br>
-<img src='https://i.imgur.com/fru5Q07.png' align='center' width=500>
+<img src='https://i.imgur.com/fru5Q07.png' align='center' width='500'>
 </div>

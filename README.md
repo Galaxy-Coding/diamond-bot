@@ -1,7 +1,7 @@
 <div align="center">
   
   
-<img src="https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png | width=100px" alt="Diamond logo">
+<img src="https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png" alt="Diamond logo" width="500">
 
 
 # Diamond

@@ -50,6 +50,9 @@
 `.d star wars quote`
 **More commands and updates coming soon. Stay tuned!
 
+## Contributing
+To contribute, simply submit a Pull Request. Make sure the code follows teh prevoius format and indent with spaces. Have fun!
 ## How to do me a favor ♥️
 * [⭐ the GitHub Repository](https://github.com/Galaxy-Coding/diamond-bot)
 * [Fork the Github Repository](https://github.com/Galaxy-Coding/diamond-bot)
+* Contribute to the project 

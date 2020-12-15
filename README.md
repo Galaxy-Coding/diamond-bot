@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./images/diamond.png" align="center" width='500'>
   <br>
-  <strong><i>A feature-rich Modmail bot for Discord.</i></strong>
+  <strong><i>A feature-rich bot for Discord.</i></strong>
   <br>
   <br>
 

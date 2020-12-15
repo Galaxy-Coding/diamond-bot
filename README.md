@@ -1,7 +1,7 @@
 <div align="center">
   
   
-  ![Diamond logo](./images/diamond.png|width=100px)  
+  ![Diamond logo](https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png | width=100px)  
 
 # Diamond
 

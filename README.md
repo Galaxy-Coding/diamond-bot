@@ -1,7 +1,8 @@
 <div align="center">
   
   
-  ![Diamond logo](https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png | width=100px)  
+<img src="https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png | width=100px" alt="Diamond logo">
+
 
 # Diamond
 

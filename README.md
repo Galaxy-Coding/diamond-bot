@@ -1,6 +1,6 @@
 <div align="center">
   
-  ![Diamond logo](./images/diamond.png)  
+  ![Diamond logo](./images/diamond.png =500x)  
 
 # Diamond
 

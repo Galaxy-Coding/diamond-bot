@@ -1,5 +1,6 @@
 `.d ping` Test command
-`.d beep` Test command\ 
+
+`.d beep` Test command
 `.d server` Displays info about the server\ 
 `.d user` Info about the user\
 `.d avatar` Shows the user's avatar\

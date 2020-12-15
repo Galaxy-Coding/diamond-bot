@@ -1,8 +1,7 @@
 `.d ping` Test command
-
 `.d beep` Test command
-`.d server` Displays info about the server\ 
-`.d user` Info about the user\
+`.d server` Displays info about the server
+`.d user` Info about the user
 `.d avatar` Shows the user's avatar\
 `.d gay avatar` Displays the user's avatar with a rainbow overlay\
 `.d trigger avatar` Displays the user's avatar with a triggered overlay\

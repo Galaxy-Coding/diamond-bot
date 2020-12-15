@@ -31,4 +31,4 @@
 `.d ron swanson`\
 `.d kanye west`\
 `.d chuck norris`\
-`.d star wars`\
+`.d star wars`

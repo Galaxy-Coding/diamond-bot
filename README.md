@@ -1,5 +1,6 @@
 <div align="center">
-  ![](./images/diamond.png)  
+  
+  ![Diamond logo](./images/diamond.png)  
 
 # Diamond
 

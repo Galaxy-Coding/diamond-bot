@@ -1,6 +1,7 @@
 <div align="center">
   <img src="./images/diamond.png" align="center" width='500'>
   <br>
+  <h1>Diamond</h1>
   <strong><i>A feature-rich bot for Discord.</i></strong>
   <br>
   <br>

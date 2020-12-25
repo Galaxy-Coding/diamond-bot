@@ -1,59 +1,64 @@
-require('./server.js')
+require('./server.js');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
-const { prefix } = require('./config.json');
+const { prefix, color } = require('./config.json');
 const client = new Discord.Client();
 const settings = { method: 'Get' };
 
+function embed(message, title, footer) {
+	if (title.length > 256) {
+		return {
+			embed: {
+				description: title,
+				color: color,
+				footer: {
+					icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
+					text: footer + ' | Diamond'
+				}
+			}
+		};
+	} else {
+		return {
+			embed: {
+				title: title,
+				color: color,
+				footer: {
+					icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
+					text: footer + ' | Diamond'
+				}
+			}
+		};
+	}
+}
+
 client.once('ready', () => {
 	console.log('Ready!');
-		console.log(client.guilds.cache.size)
-     client.user.setStatus('online')
-     client.user.setPresence({
-         game: {
-             name: `.d help in ${client.guilds.cache.size} servers`,
-             type: "Listening",
-             url: "https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8"
-         }
-     });
+	console.log(client.guilds.cache.size);
+	client.user.setStatus('online');
+	client.user.setPresence({
+		game: {
+			name: `.d help in ${client.guilds.cache.size} servers`,
+			type: 'Listening',
+			url:
+				'https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8'
+		}
+	});
 });
 
 client.on('message', message => {
 	if (message.content === `${prefix} ping`) {
-		message.channel.send('pong');
+		message.channel.send(embed(message, 'pong', 'Test Command'));
 	} else if (message.content === `${prefix} beep`) {
-		message.channel.send({
-			embed: {
-				description: `Info about <@${message.author.id}>`,
-				color: 123456,
-				timestamp: message.createdTimestamp,
-				thumbnail: {
-					url: message.author.displayAvatarURL()
-				},
-				author: {
-					name: message.author.username,
-					icon_url: message.author.displayAvatarURL()
-				},
-				fields: [
-					{
-						name: 'Joined at:',
-						timestamp: message.author.joinedAt,
-						inline: true
-					},
-
-					{
-						name: '<:thonkang:219069250692841473>',
-						value: 'are inline fields',
-						inline: true
-					}
-				]
-			}
-		});
+		message.channel.send(embed(message, 'bloop', 'Test Command'));
 	} else if (message.content === `${prefix} server`) {
 		message.channel.send(
-			`Server name: ${message.guild.name}\nTotal members: ${
-				message.guild.memberCount
-			}`
+			embed(
+				message,
+				`Server name: ${message.guild.name}\nTotal members: ${
+					message.guild.memberCount
+				}`,
+				'Server'
+			)
 		);
 	} else if (message.content === `${prefix} user`) {
 		message.channel.send(
@@ -62,7 +67,7 @@ client.on('message', message => {
 	} else if (message.content === `${prefix} avatar`) {
 		message.channel.send(message.author.displayAvatarURL());
 	} else if (message.content === `${prefix} help`) {
-		message.channel.send(
+		message.channel.send(embed(message, 
 			`Commands:
 **.d help**
 **.d invite**
@@ -96,7 +101,7 @@ client.on('message', message => {
 .d trigger avatar
 .d kanye west
 .d chuck norris
-.d star wars`
+.d star wars`, "Command List")
 		);
 	} else if (message.content == `${prefix} lag`) {
 		message.channel.send(
@@ -223,47 +228,49 @@ client.on('message', message => {
 		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			message.channel.messages.fetch().then(results => {
 				message.channel.bulkDelete(results);
+				message.channel.send(embed(message, "Messages Deleted Successfully", "Clear Messages"))
 			});
+			
+		} else{
+		  message.channel.send(embed(message, "You do not have the permission **Manage Messages** to clear messages", "Clear Messages"))
 		}
 	} else if (message.content == `${prefix} kanye west`) {
 		fetch('https://api.kanye.rest/?format=json', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(json.quote);
+				message.channel.send(embed(message, json.quote, "Kanye West Quote"));
 			});
 	} else if (message.content == `${prefix} ron swanson`) {
 		fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(json[0]);
+				message.channel.send(embed(message, json.quote, "Ron Swanson Quote"));
 			});
+			//
 	} else if (message.content == `${prefix} geek joke`) {
 		fetch('https://geek-jokes.sameerkumar.website/api?format=json', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(json.joke);
+				message.channel.send(embed(message, json.joke, "Geek Joke"));
 			});
 	} else if (message.content == `${prefix} chuck norris`) {
 		fetch('https://api.chucknorris.io/jokes/random', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(json.value);
+				message.channel.send(embed(message, json.value, "Chuck Norris Quote"));
 			});
 	} else if (message.content == `${prefix} star wars`) {
-		fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote', settings)
+		fetch(
+			'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote',
+			settings
+		)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(json.starWarsQuote);
-			});
-	} else if (message.content == `${prefix} star wars`) {
-		fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote', settings)
-			.then(res => res.json())
-			.then(json => {
-				message.channel.send(json.starWarsQuote);
+				message.channel.send(
+					embed(message, json.starWarsQuote, 'Star Wars Quote')
+				);
 			});
 	}
 });
 client.login(process.env.DISCORD_TOKEN);
 
-//https://api.quotable.io/random
-//https://stats.uptimerobot.com/MNJEGf5gyB

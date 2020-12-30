@@ -48,7 +48,7 @@
 `.d kanye west quote`\
 `.d chuck norris quote`\
 `.d star wars quote`
-**More commands and updates coming soon. Stay tuned!
+**More commands and updates coming soon. Stay tuned!**
 
 ## Contributing
 To contribute, simply submit a Pull Request. Make sure the code follows teh prevoius format and indent with spaces. Have fun!

@@ -1,3 +1,4 @@
+let activity = 0;
 require('./server.js');
 let file;
 const fetch = require('node-fetch');
@@ -13,7 +14,8 @@ function imgembed(message, imgurl, footer) {
 			},
 			color: color,
 			footer: {
-				icon_url: 'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
+				icon_url:
+					'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
 				text: footer + ' | Diamond'
 			}
 		}
@@ -26,7 +28,8 @@ function embed(message, title, footer) {
 				description: title,
 				color: color,
 				footer: {
-					icon_url: 'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
+					icon_url:
+						'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
 					text: footer + ' | Diamond'
 				}
 			}
@@ -37,7 +40,8 @@ function embed(message, title, footer) {
 				title: title,
 				color: color,
 				footer: {
-					icon_url: 'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
+					icon_url:
+						'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
 					text: footer + ' | Diamond'
 				}
 			}
@@ -46,20 +50,28 @@ function embed(message, title, footer) {
 }
 
 client.once('ready', () => {
-	console.log('Ready!');
+	//Client.guilds.cache.get("787095316993671199").channels.cache.get("788127850808606750").send(client.guilds.cache.size);
 	console.log(client.guilds.cache.size);
-	client.user.setStatus('online');
-	client.user.setPresence({
-		game: {
-			name: `.d help in ${client.guilds.cache.size} servers`,
-			type: 'Listening',
-			url:
-				'https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8'
+	setInterval(() => {
+		if (activity == 1) {
+			client.user.setActivity(`${client.guilds.cache.size} servers`, {
+				type: 'WATCHING'
+			});
+			activity = 0;
+		} else {
+			client.user.setActivity(`.d help`, { type: 'LISTENING' });
+			activity = 1;
 		}
-	});
+	}, 5000);
 });
-
 client.on('message', message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+	const args = message.content
+		.slice(prefix.length)
+		.trim()
+		.split(/ +/);
+	const command = args.shift().toLowerCase();
 	if (message.content === `${prefix} ping`) {
 		message.channel.send(embed(message, 'pong', 'Test Command'));
 	} else if (message.content === `${prefix} beep`) {
@@ -71,7 +83,7 @@ client.on('message', message => {
 				`Server name: ${message.guild.name}\nTotal members: ${
 					message.guild.memberCount
 				}`,
-				'Server'
+				'Server Info'
 			)
 		);
 	} else if (message.content === `${prefix} user`) {
@@ -79,7 +91,9 @@ client.on('message', message => {
 			`Your username: ${message.author.username}\nYour ID: ${message.author.id}`
 		);
 	} else if (message.content === `${prefix} avatar`) {
-		message.channel.send(img(message, embedmessage.author.displayAvatarURL(), "User avatar"));
+		message.channel.send(
+			img(message, embedmessage.author.displayAvatarURL(), 'User avatar')
+		);
 	} else if (message.content === `${prefix} help`) {
 		message.channel.send(
 			embed(
@@ -122,17 +136,21 @@ client.on('message', message => {
 			)
 		);
 	} else if (message.content == `${prefix} lag`) {
-		message.channel.send(embed(message, 
-			`Latency is ${Date.now() -
-				message.createdTimestamp}ms. API Latency is ${Math.round(
-				client.ws.ping
-			)}ms`, "Lag")
+		message.channel.send(
+			embed(
+				message,
+				`Latency is ${Date.now() -
+					message.createdTimestamp}ms. API Latency is ${Math.round(
+					client.ws.ping
+				)}ms`,
+				'Lag'
+			)
 		);
-	} else if (message.content == `${prefix} reddit meme`) {
+	} else if (message.content == `${prefix} meme`) {
 		fetch('https://meme-api.herokuapp.com/gimme', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.url, "Reddit Meme"));
+				message.channel.send(imgembed(message, json.url, 'Reddit Meme'));
 			});
 	} else if (message.content == `${prefix} joke`) {
 		fetch('https://official-joke-api.appspot.com/random_joke', settings)
@@ -141,12 +159,6 @@ client.on('message', message => {
 				message.channel.send(
 					embed(message, `${json.setup}\n**${json.punchline}**`, 'Joke')
 				);
-			});
-	} else if (message.content == `${prefix} meme`) {
-		fetch('https://some-random-api.ml/meme', settings)
-			.then(res => res.json())
-			.then(json => {
-				message.channel.send(imgembed(message, json.image, "Meme"));
 			});
 	} else if (message.content == `${prefix} dog fact`) {
 		fetch('https://some-random-api.ml/facts/dog', settings)
@@ -188,61 +200,73 @@ client.on('message', message => {
 		fetch('https://dog.ceo/api/breeds/image/random', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.message, "Dog Picture"));
+				message.channel.send(imgembed(message, json.message, 'Dog Picture'));
 			});
 	} else if (message.content == `${prefix} cat pic`) {
 		fetch('https://some-random-api.ml/img/cat', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.link, "Cat Picture"));
+				message.channel.send(imgembed(message, json.link, 'Cat Picture'));
 			});
 	} else if (message.content == `${prefix} panda pic`) {
 		fetch('https://some-random-api.ml/img/panda', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.link, "Panda Picture"));
+				message.channel.send(imgembed(message, json.link, 'Panda Picture'));
 			});
 	} else if (message.content == `${prefix} bird pic`) {
 		fetch('https://some-random-api.ml/img/birb', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.link, "Bird Picture"));
+				message.channel.send(imgembed(message, json.link, 'Bird Picture'));
 			});
 	} else if (message.content == `${prefix} fox pic`) {
 		fetch('https://some-random-api.ml/img/fox', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.link, "Fox Picture"));
+				message.channel.send(imgembed(message, json.link, 'Fox Picture'));
 			});
 	} else if (message.content == `${prefix} koala pic`) {
 		fetch('https://some-random-api.ml/img/koala', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(imgembed(message, json.link, "Koala Picture"));
+				message.channel.send(imgembed(message, json.link, 'Koala Picture'));
 			});
 	} else if (message.content === `${prefix} gay avatar`) {
-		message.channel.send(imgembed(message, 
-			`https://some-random-api.ml/canvas/gay?avatar=${encodeURIComponent(
-				message.author.displayAvatarURL().replace('webp', 'png')
-			)}`, "Gay avatar ")
+		message.channel.send(
+			imgembed(
+				message,
+				`https://some-random-api.ml/canvas/gay?avatar=${encodeURIComponent(
+					message.author.displayAvatarURL().replace('webp', 'png')
+				)}`,
+				'Gay avatar '
+			)
 		);
-	} else if (message.content === `${prefix} uptime`) {
-		message.channel.send(`https://stats.uptimerobot.com/RkPMNfrJBx`);
 	} else if (message.content == `${prefix} trump`) {
 		fetch('https://api.tronalddump.io/random/quote', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.reply(embed(message, `\n> ${json.value}\n-Donald Trump`, "Trump Quote"));
+				message.reply(
+					embed(message, `\n> ${json.value}\n-Donald Trump`, 'Trump Quote')
+				);
 			});
 	} else if (message.content == `${prefix} invite`) {
-		message.reply(embed(message, 
-			`Invite the bot here: https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8`, "Invite this bot"
-		));
+		message.reply(
+			embed(
+				message,
+				`Invite the bot here: https://discord.com/oauth2/authorize?client_id=787006555761279006&scope=bot&permissions=8`,
+				'Invite this bot'
+			)
+		);
 	} else if (message.content === `${prefix} trigger avatar`) {
 		message.channel.send(
-			`https://some-random-api.ml/canvas/triggered?avatar=${encodeURIComponent(
-				message.author.displayAvatarURL().replace('webp', 'png')
-			)}`
+			imgembed(
+				message,
+				`https://some-random-api.ml/canvas/triggered?avatar=${encodeURIComponent(
+					message.author.displayAvatarURL().replace('.webp', '.png')
+				)}`,
+				'Triggered Avatar'
+			)
 		);
 	} else if (message.content === `${prefix} clear`) {
 		if (message.member.hasPermission('MANAGE_MESSAGES')) {
@@ -265,13 +289,17 @@ client.on('message', message => {
 		fetch('https://api.kanye.rest/?format=json', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(embed(message, json.quote, 'Kanye West Quote'));
+				message.channel.send(
+					embed(message, `> ${json.quote}`, 'Kanye West Quote')
+				);
 			});
 	} else if (message.content == `${prefix} ron swanson`) {
 		fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(embed(message, json.quote, 'Ron Swanson Quote'));
+				message.channel.send(
+					embed(message, `> ${json.quote}`, 'Ron Swanson Quote')
+				);
 			});
 		//
 	} else if (message.content == `${prefix} geek joke`) {
@@ -284,7 +312,9 @@ client.on('message', message => {
 		fetch('https://api.chucknorris.io/jokes/random', settings)
 			.then(res => res.json())
 			.then(json => {
-				message.channel.send(embed(message, json.value, 'Chuck Norris Quote'));
+				message.channel.send(
+					embed(message, `> ${json.value}`, 'Chuck Norris Quote')
+				);
 			});
 	} else if (message.content == `${prefix} star wars`) {
 		fetch(
@@ -297,6 +327,35 @@ client.on('message', message => {
 					embed(message, json.starWarsQuote, 'Star Wars Quote')
 				);
 			});
+	} else if (message.content == `${prefix} apod`) {
+		fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`, settings)
+			.then(res => res.json())
+			.then(json => {
+				message.channel.send({
+					embed: {
+						description: json.description,
+						img: {
+							url: json.url
+						},
+						color: color,
+						footer: {
+							icon_url:
+								'https://raw.githubusercontent.com/Galaxy-Coding/diamond-bot/master/images/diamond.png',
+							text: 'Astronomy Picture of the Day | Diamond'
+						}
+					}
+				});
+			});
+	} else if (command === `${prefix} caniuse`) {
+		console.log('caniuse');
+		if (!args.length) {
+			return message.channel.send(embed(`You didn't provide any arguments`));
+		} else if (args[0] === 'foo') {
+			return message.channel.send('bar');
+		}
+
+		message.channel.send(`First argument: ${args[0]}`);
 	}
 });
+
 client.login(process.env.DISCORD_TOKEN);
